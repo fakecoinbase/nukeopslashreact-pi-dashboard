@@ -1,5 +1,11 @@
 @import './palette.scss';
 
+body {
+  position: absolute;
+  width: 240px !important;
+  height: 320px !important;
+}
+
 .app {
   position: absolute;
   width: 100%;
