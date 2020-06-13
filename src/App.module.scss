@@ -1,9 +1,14 @@
 @import './palette.scss';
 
+html {
+  background: $black;
+}
+
 body {
   position: absolute;
   width: 320px !important;
   height: 240px !important;
+  color: $white;
 }
 
 .app {

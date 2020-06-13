@@ -3,6 +3,7 @@ import React from 'react';
 import Grid from './components/Grid';
 import Row from './components/Row';
 import Tile from './components/Tile';
+import WeatherWidgetContainer from './containers/WeatherWidgetContainer'
 
 import styles from './App.module.scss';
 
@@ -11,7 +12,7 @@ function App() {
     <div className={styles['app']}>
       <Grid>
         <Row>
-          <Tile color='purple'>20</Tile>
+        <WeatherWidgetContainer />
         </Row>
         <Row>
           <Tile color='red'>10</Tile>

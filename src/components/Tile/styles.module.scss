@@ -21,6 +21,14 @@
     background: $red;
   }
 
+  &.orange {
+    background: $orange;
+  }
+
+  &.yellow {
+    background: $yellow;
+  }
+
   &.green {
     background: $green;
   }
@@ -29,11 +37,15 @@
     background: $blue;
   }
 
-  &.orange {
-    background: $orange;
-  }
-
   &.purple {
     background: $purple;
+  }
+
+  &.whiteText {
+    color: $white;
+  }
+
+  &.blackText {
+    color: $black;
   }
 }

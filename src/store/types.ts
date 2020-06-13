@@ -7,3 +7,9 @@ export type ActionsType <actions extends ActionsBasicType> = {
 };
 
 export type PayloadType <actions extends ActionsType<ActionsBasicType>> = actions[keyof actions]['payload'];
+
+export type Loadable<T> = {
+  data: T; 
+  loading?: boolean; 
+  error?: string | boolean;
+};
