@@ -5,7 +5,8 @@ import { Dimmer, Loader } from 'semantic-ui-react';
 import { Color } from '../types';
 import styles from './styles.module.scss';
 
-type TileProps = {
+export type TileProps = {
+  className?: string;
   children: React.ReactNode;
   loading?: boolean;
   error?: boolean | string;
@@ -14,6 +15,7 @@ type TileProps = {
 };
 
 const Tile: React.FC<TileProps> = ({
+  className,
   children,
   loading = false,
   error = false,
@@ -21,6 +23,7 @@ const Tile: React.FC<TileProps> = ({
   textColor = 'white'
 }) => (
     <div className={cx(
+      className,
       styles['tile'],
       styles[color],
       styles[`${textColor}Text`]

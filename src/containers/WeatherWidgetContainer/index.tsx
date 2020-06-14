@@ -10,9 +10,17 @@ import WeatherWidget from '../../widgets/WeatherWidget';
 const WeatherWidgetContainer: React.FC<{}> = () => {
   const dispatch: ThunkDispatch<WeatherStore, any, AnyAction> = useDispatch();
   const weatherData = useSelector(weatherSelectors.weatherData);
+
+  // Load data on mount
   useEffect(() => {
-    dispatch(weatherThunks.fetchWeather());
+    dispatch(weatherThunks.fetchWeather())
   }, []);
+
+  // Refresh data every minute
+  useEffect(() => {
+    const interval = setInterval(() => dispatch(weatherThunks.fetchWeather()), 60 * 1000);
+    return () => clearInterval(interval);
+  }, [weatherData]);
 
   return <WeatherWidget
     loading={weatherData.loading}
