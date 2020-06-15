@@ -12,12 +12,14 @@ type CryptoWidgetProps = {
 
 const CryptoWidget: React.FC<CryptoWidgetProps> = ({
   currency,
-  cryptoData
+  cryptoData,
+  ...rest
 }) => (
     <ChartTile
       color='green'
       data={cryptoData ? cryptoData.map(point => point.price) : []}
       title={currency.toUpperCase()}
+      { ...rest }
     />
 );
 
