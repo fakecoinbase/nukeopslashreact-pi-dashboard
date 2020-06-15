@@ -22,7 +22,7 @@ export const weatherThunks = {
   fetchWeather: () => async dispatch => {
     dispatch(weatherActions.fetchWeatherDataStart());
     try {
-      const data = await (await OpenWeatherMapApi.fetchWeatherData()).json() as WeatherData;
+      const data = await OpenWeatherMapApi.fetchWeatherData() as WeatherData;
       dispatch(weatherActions.fetchWeatherDataOk(data));
     } catch (e) {
       dispatch(weatherActions.fetchWeatherDataError(e.toString()));
