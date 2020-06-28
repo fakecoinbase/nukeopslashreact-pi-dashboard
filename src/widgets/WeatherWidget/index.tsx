@@ -3,12 +3,15 @@ import React from 'react';
 import Grid from '../../components/Grid';
 import Row from '../../components/Row';
 import Tile from '../../components/Tile';
+import { Color } from '../../components/types';
 import { WeatherData } from '../../services/OpenWeatherMap';
 
 type WeatherWidgetProps = {
   loading?: boolean;
   error?: boolean | string;
   weatherData: WeatherData;
+  hasWeatherType?: boolean;
+  color?: Color;
 };
 
 const cloudsToEmoji = (clouds?: number) => {
@@ -47,9 +50,11 @@ const weatherToEmoji = (name?: string, clouds?: number) => {
 const WeatherWidget: React.FC<WeatherWidgetProps> = ({
   loading = false,
   error = false,
-  weatherData
+  hasWeatherType = false,
+  weatherData,
+  color = 'purple'
 }) => (
-    <Tile loading={loading} color='purple'>
+    <Tile loading={loading} color={color}>
       {
         !loading && !error &&
         <Grid>
@@ -62,16 +67,19 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
           <Row>
             Humidity: {weatherData.current?.humidity}%
           </Row>
-          <Row>
-            Weather: {
-              weatherData.current?.weather.map(
-                weatherType => `${weatherType.main} ${weatherToEmoji(
-                  weatherType.main,
-                  weatherData.current?.clouds
-                )}`
-              )
-            }
-          </Row>
+          {
+            hasWeatherType &&
+            <Row>
+              Weather: {
+                weatherData.current?.weather?.map(
+                  weatherType => `${weatherType.main} ${weatherToEmoji(
+                    weatherType.main,
+                    weatherData.current?.clouds
+                  )}`
+                )
+              }
+            </Row>
+          }
         </Grid>
       }
     </Tile>

@@ -9,11 +9,11 @@ export type WeatherType = {
 export type WeatherData = {
   current?: {
     temp: number;
-    feels_like: number;
+    feels_like?: number;
     pressure: number;
     humidity: number;
-    clouds: number;
-    weather: WeatherType[];
+    clouds?: number;
+    weather?: WeatherType[];
   }
 };
 
@@ -23,7 +23,7 @@ class OpenWeatherMapApi {
       { lat: number, lon: number, appId: string }
   ) => `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily&units=metric&appid=${appId}`
 
-  fetchWeatherData: (() => Promise<Response>) = async () => {
+  fetchWeatherData: (() => Promise<WeatherData>) = async () => {
     return (await (fetch(this.getApiUrl({ lat: config.lat, lon: config.lon, appId: config.openWeatherMapApiKey })))).json();
   }
 };

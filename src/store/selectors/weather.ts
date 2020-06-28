@@ -9,5 +9,9 @@ export const weatherSelectors = {
   weatherData: createSelector(
     weatherStore,
     s => s.weatherData
+  ),
+  localWeatherData: createSelector(
+    weatherStore,
+    s => s.localWeatherData
   )
 };

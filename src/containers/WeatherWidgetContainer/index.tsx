@@ -26,6 +26,7 @@ const WeatherWidgetContainer: React.FC<{}> = () => {
     loading={weatherData.loading}
     error={weatherData.error}
     weatherData={weatherData.data}
+    hasWeatherType
   />;
 }
 
